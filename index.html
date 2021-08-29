@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="description" content="Music player using JavaScript OOP concept and ES6 Module" />
+    <meta name="description" content="Music player using JavaScript OOP concept and ES6 Module" />
+    <meta name="author" content="Md. Fahim Tayebee" />
+    <meta name="keywords" content="MUSIX" />
+    <meta name="robots" content="all" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta property="og:image" content="assets/img/main.png" />
+
+    <meta property="og:description" content="Music player using JavaScript OOP concept and ES6 Module" />
+
+    <meta property="og:url" content="http://www.fahimtayebee.com" />
+    <meta property="og:title" content="MUSIX" />
+    <link rel="shortcut icon" href="assets/img/app_icon.png" type="image/x-icon" />
+
+    <link rel="stylesheet" href="assets/lib/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel='stylesheet' href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap">
+    <link rel='stylesheet'
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap">
+    <link rel='stylesheet' href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap">
+    <link rel='stylesheet' href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'>
+
+    <!-- Script Area -->
+    <script src="assets/js/jquery-3.5.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.lazy.min.js"></script>
+    <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
+
+    <title>MUSIX</title>
+</head>
+
+<body id="body-div">
+
+    <section class="main">
+        <!-- MUSIC VIDEO SOURCE -->
+        <!-- <iframe id="sm-bg-video" src=""></iframe> -->
+        
+        <div class="container-fluid">
+            <div class="row lgh">
+                <div class="col-md-6 m-auto">
+                    <div class="media-main">
+                        <div class="media-bg"></div>
+                        <div class="media-content">
+                            <!-- PLAYLIST OPEN BUTTON -->
+                            <div class="topbar">
+                                <button class="btns btn-playlist" id="oc-playlist">
+                                    <i class="fas fa-bars"></i>
+                                </button>
+                            </div>
+            
+                            <!-- MUSIC DETAILS AREA -->
+                            <div class="row ms-con text-dark">
+                                <div class="col-md-12">
+                                    <img src="assets/img/31845.jpeg" alt="" width="300" height="300" id="poster">
+                                    <h2 class="title">Alan Walker - Faded</h2>
+                                    <p><span class="ms-tt">Artist:</span> <span class="artist"></span></p>
+                                    <p><span class="ms-tt">Album:</span> <span class="album"></span></p>
+                                    <p><span class="ms-tt">Views:</span> <span class="views"></span></p>
+                                    <p><span class="ms-tt">Release:</span> <span class="release"></span></p>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="player">
+                                        <div class="time-elements">
+                                            <p class="current-time">0:00</p>
+                                            <p class="total-time">3:30</p>
+                                        </div>
+                                        <div class="progress"></div>
+                                        <div class="btns-list col-md-8 m-auto d-flex justify-content-between align-items-center">
+                                            <button class="btns btn-move move-left" id="mv-left">
+                                                <i class="fas fa-angle-double-left"></i>
+                                            </button>
+                                            <button class="btns btn-pp" id="pp-song">
+                                                <i class="fas fa-play"></i>
+                                                <!-- <i class="fas fa-pause"></i> -->
+                                            </button>
+                                            <button class="btns btn-move move-right" id="mv-right">
+                                                <i class="fas fa-angle-double-right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PLAYLIST TABLE -->
+                        <div class="pl-table">
+                            <div class="tbl-btns d-flex justify-content-between align-items-center">
+                                <h4 class="s-count">1 Songs</h4>
+                                <button class="btn-close" id="oc-playlist">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            <table class="table text-dark font-weight-bold">
+                                <thead>
+                                    <tr class="w-100">
+                                        <th scope="col" width="100px"></th>
+                                        <th scope="col">Title</th>
+                                        <th scope="col">Duration</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="plt-body">
+                                    <!-- <tr class="s-tr">
+                                        <th scope="row">
+                                            <img src="assets/img/31845.jpeg" alt="" class="img-fluid tbl-img">
+                                        </th>
+                                        <td>
+                                            <div class="tbl-con d-block">
+                                                <p class="s-title">ABC</p>
+                                                <p class="s-artist font-weight-normal">xxx</p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="tbl-con">
+                                                <p class="s-duration">3.30</p>
+                                            </div>
+                                        </td>
+                                    </tr> -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="assets/js/script.js" type="module"></script>
+
+    <script>
+        const playlistBtn   = document.querySelector('#oc-playlist');
+        const playlistTable = document.querySelector('.pl-table');
+        const closeBtn      = document.querySelector('.btn-close');
+
+        if (playlistBtn != null) {
+            playlistBtn.addEventListener('click', function () {
+                playlistTable.classList.add('slide-in');
+                playlistTable.classList.remove('slide-out');
+                playlistTable.style.right = "0%";
+            });
+        }
+
+        if (closeBtn != null) {
+            closeBtn.addEventListener('click', function () {
+                playlistTable.classList.remove('slide-in');
+                playlistTable.classList.add('slide-out');
+                playlistTable.style.right = "-58%";
+            });
+        }
+
+    </script>
+
+</body>
+
+</html>

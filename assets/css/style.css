@@ -1,0 +1,306 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+h1,h2,h3,h4,h5,h6,p {
+  margin: 0;
+}
+body{
+  overflow: hidden;
+}
+/* body::-webkit-scrollbar {
+  width: 0.7em;
+}
+
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(97, 0, 32, 0.185);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(
+    110.3deg,
+    rgba(73, 93, 109, 1) 4.3%,
+    rgba(49, 55, 82, 1) 96.7%
+  );
+  border-radius: 25px;
+} */
+
+.main {
+  overflow: hidden;
+  background: var(--primary-gradient);
+}
+.lgh {
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+:root{
+  --primary-gradient: linear-gradient( 112.1deg,  rgba(32,38,57,1) 11.4%, rgba(63,76,119,1) 70.2% );
+  /* --secondary-gradient:  */
+  --app-color: rgb(255, 8, 90);
+  --active-item-color : #00ffb8;
+  --active-item-bg    : rgba(173,252,234,0.4);
+  --active-item-effect: brightness(10px);
+  --pause-item-color  : #ff006a;
+}
+.media-main{
+  overflow: hidden;
+  position: relative;
+  background-image: url(../img/pexels-photo-1235402.jpeg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 20px;
+  min-height: 70vh;
+  z-index: 1;
+  border-radius: 10px;
+  box-shadow: 0 0 12px 0px rgb(26 26 26 / 36%);
+  backdrop-filter: blur(20px) saturate(200%);
+  -webkit-backdrop-filter: blur(20px) saturate(200%);
+  background-color: rgba(190, 79, 3, 0);
+}
+.media-bg{
+  background-image: linear-gradient( 108.1deg,  rgba(167,220,225,1) 11.2%, rgba(217,239,242,1) 88.9% );
+  opacity: 0.7;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  filter: saturate(200%);
+  -webkit-filter: saturate(200%);
+}
+.media-content{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  min-height: 65vh;
+}
+.media-content .topbar{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.ms-con{
+  text-align: center;
+}
+.ms-con img{
+  margin-bottom: 15px;
+}
+.ms-con h2{
+  font-family: 'Poppins',sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  font-style: normal;
+  text-decoration: none;
+  text-transform: capitalize;
+  text-rendering: geometricPrecision;
+  margin-bottom: 15px;
+}
+.ms-tt{
+  font-size: 18px;
+  font-family: 'Poppins',sans-serif;
+  font-weight: 600;
+}
+
+.player{
+  margin-top: 25px;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 0 12px 0px rgb(26 26 26 / 36%);
+}
+.player .time-elements{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.btns-list{
+  padding-top: 10px;
+}
+.btns{
+  padding: 15px;
+  background-color: white;
+  border-radius: 50%;
+  line-height: 18px;
+  font-size: 18px;
+  box-shadow: 2px 2px 8px rgb(0 0 0 / 25%);
+  border: none!important;
+  outline: none!important;
+}
+.btns:active{
+  box-shadow: inset 2px 2px 8px rgb(0 0 0 / 25%)!important;
+}
+.btns:focus, .btns:active{
+  border: none!important;
+  outline: none!important;
+}
+.btn-pp{
+  font-size: 28px;
+  width: 65px;
+  height: 65px;
+}
+
+
+.pl-table{
+  overflow: hidden;
+  padding: 10px 0px;
+  color: white;
+  position: absolute;
+  top: 0;
+  right: -60%;
+  height: 100%;
+  width: 50vh;
+  transition: 0.4s all ease-in-out;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: block;
+  backdrop-filter: blur(20px) saturate(200%);
+  -webkit-backdrop-filter: blur(20px) saturate(200%);
+  background-color: rgba(190, 79, 3, 0);
+}
+.pl-table::before{
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background: linear-gradient( to right bottom, rgb(255 255 255 / 69%), rgb(255 255 255 / 71%) );
+  width: 100%;
+  height: 100%;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  filter: blur(10px) saturate(200%);
+  z-index: -1;
+}
+.slide-in{
+  animation: slide-in 0.5s forwards;
+  -webkit-animation: slide-in 0.5s forwards;
+}
+.slide-out{
+  animation: slide-out 0.5s forwards;
+  -webkit-animation: slide-out 0.5s forwards;
+}
+@keyframes slide-in {
+  0% {
+    -webkit-transform: translateX(60%);
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+  }
+}
+@keyframes slide-out {
+  0% {
+    -webkit-transform: translateX(0%);
+  }
+  100% {
+    -webkit-transform: translateX(60%);
+  }
+}
+
+.pl-table .s-tr{
+  transition: 0.2s all ease-in-out;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.pl-table .s-tr.active{
+  background-color: var(--active-item-bg);
+  filter: var(--active-item-effect);
+  -webkit-filter: var(--active-item-effect);
+}
+.pl-table .s-tr:hover{
+  background-color: var(--active-item-bg);
+  filter: var(--active-item-effect);
+  -webkit-filter: var(--active-item-effect);
+}
+.tbl-btns{
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+.tbl-img-box{
+  width: 60px;
+  height: 60px;
+  position: relative;
+}
+.tbl-img{
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+.tbl-con{
+  display: inline-grid;
+  align-items: center;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  min-height: 60px;
+}
+.pl-table .s-tr:hover .tbl-img-box .icon-box{
+  opacity: 1;
+}
+.s-count{
+  font-size: 18px;
+  font-family: 'Poppins',sans-serif;
+  font-weight: 700;
+  padding-left: 10px;
+  color: #0c0027;
+}
+.tbl-img-box .icon-box.active, .pl-table .s-tr.active .tbl-img-box .icon-box.active{
+  opacity: 1;
+}
+.tbl-img-box .icon-box{
+  opacity: 0;
+  transition: 0.2s all ease-in-out;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(29, 29, 29, 0.3);
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  border-radius: 5px;
+}
+.tbl-img-box .icon-box .btn-pp{
+  font-size: 18px;
+  height: 35px;
+  width: 35px;
+  line-height: 18px;
+  padding: 5px;
+  background: var(--active-item-color);
+  color: white;
+}
+.btn-close, .btn-playlist{
+  padding: 5px;
+  border: none;
+  outline: none;
+  background: white;
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  line-height: 18px;
+}
+.s-artist{
+  font-weight: 500!important;
+}
