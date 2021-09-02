@@ -78,16 +78,19 @@
                                             <p class="current-time">0:00</p>
                                             <p class="total-time">3:30</p>
                                         </div>
-                                        <div class="progress"></div>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+                                            <div class="progress-ball"></div>
+                                        </div>
                                         <div class="btns-list col-md-8 m-auto d-flex justify-content-between align-items-center">
-                                            <button class="btns btn-move move-left" id="mv-left">
+                                            <button class="btns btn-move btn-prev" id="mv-left">
                                                 <i class="fas fa-angle-double-left"></i>
                                             </button>
                                             <button class="btns btn-pp" id="pp-song">
-                                                <i class="fas fa-play"></i>
+                                                <i class="fas fa-play success"></i>
                                                 <!-- <i class="fas fa-pause"></i> -->
                                             </button>
-                                            <button class="btns btn-move move-right" id="mv-right">
+                                            <button class="btns btn-move btn-next" id="mv-right">
                                                 <i class="fas fa-angle-double-right"></i>
                                             </button>
                                         </div>
@@ -113,22 +116,7 @@
                                     </tr>
                                 </thead>
                                 <tbody id="plt-body">
-                                    <!-- <tr class="s-tr">
-                                        <th scope="row">
-                                            <img src="assets/img/31845.jpeg" alt="" class="img-fluid tbl-img">
-                                        </th>
-                                        <td>
-                                            <div class="tbl-con d-block">
-                                                <p class="s-title">ABC</p>
-                                                <p class="s-artist font-weight-normal">xxx</p>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="tbl-con">
-                                                <p class="s-duration">3.30</p>
-                                            </div>
-                                        </td>
-                                    </tr> -->
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -142,26 +130,7 @@
     <script src="assets/js/script.js" type="module"></script>
 
     <script>
-        const playlistBtn   = document.querySelector('#oc-playlist');
-        const playlistTable = document.querySelector('.pl-table');
-        const closeBtn      = document.querySelector('.btn-close');
-
-        if (playlistBtn != null) {
-            playlistBtn.addEventListener('click', function () {
-                playlistTable.classList.add('slide-in');
-                playlistTable.classList.remove('slide-out');
-                playlistTable.style.right = "0%";
-            });
-        }
-
-        if (closeBtn != null) {
-            closeBtn.addEventListener('click', function () {
-                playlistTable.classList.remove('slide-in');
-                playlistTable.classList.add('slide-out');
-                playlistTable.style.right = "-58%";
-            });
-        }
-
+        
     </script>
 
 </body>

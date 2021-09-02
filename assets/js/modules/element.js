@@ -11,4 +11,13 @@ export default class Element{
     static timeElements = document.querySelector('.time-elements');
     static songCount    = document.querySelector('.s-count');
     static songRowItems = document.querySelectorAll('.s-tr');
+    static currentTime  = document.querySelector('.current-time');
+    static totalTime    = document.querySelector('.total-time');
+    static playlistBtn   = document.querySelector('#oc-playlist');
+    static playlistTable = document.querySelector('.pl-table');
+    static closeBtn      = document.querySelector('.btn-close');
+    static ppSongBtn     = document.querySelector('#pp-song');
+    static prevSong      = document.querySelector('.btn-prev');
+    static nextSong      = document.querySelector('.btn-next');
+    static progressbar   = document.querySelector('.progress-bar');
 }

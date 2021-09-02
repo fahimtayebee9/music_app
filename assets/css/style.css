@@ -304,3 +304,33 @@ body::-webkit-scrollbar-thumb {
 .s-artist{
   font-weight: 500!important;
 }
+.progress{
+  height: 8px;
+}
+.progress-bar{
+  background-color: var(--pause-item-color);
+  position: relative;
+  height: 8px;
+}
+.progress-ball{
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: var(--pause-item-color);
+  box-shadow: 0 0 4px 0 #0c0027;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 5%;
+  transform: translate(-5%,-100%);
+  -webkit-transform: translate(-5%,-100%);
+  -moz-transform: translate(-5%,-100%);
+  -ms-transform: translate(-5%,-100%);
+  -o-transform: translate(-5%,-100%);
+}
+.success{
+  color: var(--active-item-color);
+}
+.danger{
+  color: var(--pause-item-color);
+}

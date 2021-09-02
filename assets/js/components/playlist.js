@@ -1,11 +1,12 @@
 import Element from "../modules/element.js";
 import Songs from "../files/songsList.js";
 import Player from "./player.js";
+import App from "../modules/app.js";
+import Trackbar from "./trackbar.js";
 
 const PlayList = (() => {
-    let currentPlayingIndex = 0;
-    let currentSong         = new Audio(Songs.songs_list[currentPlayingIndex].audio);
-    // currentSong.crossOrigin = 'anonymous';
+    let currentPlayingIndex = Songs.songs_list.indexOf[Player.getState().currentSong];
+    let currentSong         = new Audio(Player.getState().currentSong.audio);
     let isPlaying           = false;
 
     const toggleAction = () => {
@@ -15,28 +16,50 @@ const PlayList = (() => {
     const changeSong = (itemIndex) => {
         if(itemIndex == currentPlayingIndex) {
             toggleAction();
+            LoadPlaylist();
+            isPlaying = currentSong.paused ? false : true;
+            Player.setState({
+                currentSong: Songs.songs_list[currentPlayingIndex],
+                isPlaying : isPlaying,
+            });
+
+            Trackbar.setState({
+                currentTime: currentSong.currentTime,
+                totalTime: currentSong.duration,
+                currentwidth: 0
+            });
         }
         else{
             currentPlayingIndex = itemIndex;
             currentSong.src = Songs.songs_list[itemIndex].audio;
             toggleAction();
-            console.log("IND :: " + currentPlayingIndex);
-            console.log("SRC :: " + currentSong.src)
+            LoadPlaylist();
+            Player.GetSongByIndex(currentPlayingIndex);
+            isPlaying = currentSong.paused ? false : true;
+            Player.setState({
+                currentSong: Songs.songs_list[currentPlayingIndex],
+                isPlaying : isPlaying,
+            });
+
+            Trackbar.setState({
+                currentTime: currentSong.currentTime,
+                totalTime: currentSong.duration,
+                currentwidth: 0
+            });
+        }
+    }
+
+    const toggleIcon = (index) => {
+        if(currentPlayingIndex == index){
+            return currentSong.paused ? 'fa-play' : 'fa-pause';
+        }
+        else{
+            return 'fa-play';
         }
     }
 
     const LoadPlaylist = () => {
         let markUp = "";
-
-        const toggleIcon = (index) => {
-            if(currentPlayingIndex == index){
-                return currentSong.paused ? 'fa-play' : 'fa-pause';
-            }
-            else{
-                return 'fa-play';
-            }
-        }
-
         Songs.songs_list.forEach( (item, index) => {
             markUp += `<tr class="s-tr ${(index == currentPlayingIndex) ? 'active': ''}">
                             <th scope="row">
@@ -44,7 +67,7 @@ const PlayList = (() => {
                                     <img src="${item.poster}" alt="" class="img-fluid tbl-img">
                                     <div class="icon-box ${(index == currentPlayingIndex) ? 'active': ''}">
                                         <button class="btns btn-pp" id="pp-song">
-                                            <i class="fas ${toggleIcon(index)}"></i>
+                                            <i class="fa ${toggleIcon(index)}"  id="${index}"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -67,20 +90,18 @@ const PlayList = (() => {
     }
 
     const eventListeners = () => {
-        // document.querySelectorAll('.s-tr').forEach( item => {
-        //     Element.pltBody.addEventListener('click', event => {
-        //         if(event.target.matches('.fas')){
-        //             console.log(event.target.parentNode.parentNode.parentNode.parentNode.parentNode)
-        //             changeSong([...document.querySelectorAll('.s-tr')].indexOf(item));
-        //             LoadPlaylist();
-        //         }
-        //     });
-        // });
         Element.pltBody.addEventListener('click', event => {
-            if(event.target.matches('.fas')){
-                const item = event.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
-                changeSong([...item.parentNode.children].indexOf(item));
+            if(event.target.matches('.fa')){
+                changeSong(event.target.id);
                 LoadPlaylist();
+                Player.setState({
+                    currentSong: Songs.songs_list[currentPlayingIndex],
+                    isPlaying : isPlaying,
+                });
+
+                if(isPlaying){
+                    App.closePlaylist();
+                }
             }
         });
     }
